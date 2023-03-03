@@ -34,8 +34,13 @@ class Booking{
         this.room = room;
     }
     getFee(){
-
-    }
+        const discountTotal = this.discount + this.room.discount
+        let priceTotal = this.room.rate
+        if (discountTotal > 0 && discountTotal < 100) {
+            priceTotal = this.room.rate - ((discountTotal * this.room.rate) / 100);
+          }
+          return Math.round(priceTotal) ;
+        }
 };
 
 module.exports = { Room, Booking }

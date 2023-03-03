@@ -22,3 +22,20 @@ describe("the room is occupied",()=>{
     })
 
 })
+
+test("getFee,10% discount", () => {
+    const room1 = new Room("single", [], 250, 5);
+    const book1 = new Booking('usuario1', 'usuario1@1.com', "2023-04-03","2023-01-15",5, room1)
+  
+    room1.bookings = [book1];
+  
+    expect(book1.getFee()).toBe(225);
+  });
+test("getFee, 20% discount", () => {
+    const room1 = new Room("suite", [], 350, 15);
+    const book1 = new Booking('usuario1', 'usuario1@1.com', "2023-04-03","2023-01-15",5, room1)
+  
+    room1.bookings = [book1];
+  
+    expect(book1.getFee()).toBe(280);
+  });
