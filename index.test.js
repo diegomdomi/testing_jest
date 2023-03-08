@@ -1,4 +1,3 @@
-// const room = require ('./index')
 const {Room,Booking }= require('./index')
 
 
