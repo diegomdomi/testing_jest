@@ -10,11 +10,11 @@ class Room {
     rate:number;
     discount: number;
 
-    constructor(ConfigRoom:RoomInterface){
-            this.name = ConfigRoom.name;
-            this.bookings = ConfigRoom.bookings;
-            this.rate = ConfigRoom.rate;
-            this.discount = ConfigRoom.discount;
+    constructor(configRoom:RoomInterface){
+            this.name = configRoom.name;
+            this.bookings = configRoom.bookings;
+            this.rate = configRoom.rate;
+            this.discount = configRoom.discount;
     };
       isOccuppied(date:string):boolean {
         let status = false;
@@ -22,11 +22,26 @@ class Room {
             if ( date >= item.checkIn && date <= item.checkOut ){
                status = true;
             }
-                status
+               
         })
         return status
     }
-    occupancyPercentage(startDate, endDate): void {}
+    occupancyPercentage(startDate:string, endDate: string): number {
+        const start = new Date(startDate);
+        const end = new Date(endDate)
+        let count = 0;
+        const dates: string[] = [];
+        let occupiedDays = 0;
+        let unoccupiedDays = 0;
+    
+        for (const date of dates) {
+          this.isOccuppied(date) ? occupiedDays++ : unoccupiedDays++;
+        }
+        let totalDays = occupiedDays + unoccupiedDays;
+        let occupancyPercentage = (occupiedDays * 100) / totalDays;
+    
+        return Math.round(occupancyPercentage);
+    }
 
     static totalOccupancyPercentage(rooms, startDate, endDate) : void{}
     static availableRooms(rooms, startDate, endDate): void{}
