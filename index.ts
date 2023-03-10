@@ -26,10 +26,10 @@ class Room {
         })
         return status
     }
-    occupancyPercentage(startDate, endDate){}
+    occupancyPercentage(startDate, endDate): void {}
 
-    static totalOccupancyPercentage(rooms, startDate, endDate) {}
-    static availableRooms(rooms, startDate, endDate){}
+    static totalOccupancyPercentage(rooms, startDate, endDate) : void{}
+    static availableRooms(rooms, startDate, endDate): void{}
 }
 
 interface BookInterface {
